@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { TransactionItems } from "./TransactionItems";
 
 export const TransactionHistory = ({ items }) => {
@@ -26,4 +27,9 @@ export const TransactionHistory = ({ items }) => {
   );
 };
 
-
+TransactionHistory.propTypes = {
+  id: PropTypes.string,
+  type: PropTypes.string,
+  amount: PropTypes.string,
+  currency: PropTypes.string,
+};

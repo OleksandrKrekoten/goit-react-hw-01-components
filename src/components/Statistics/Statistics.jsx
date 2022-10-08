@@ -1,13 +1,14 @@
-export const Statistics = ({ title, stats })=> {
+import PropTypes from 'prop-types';
+export const Statistics = ({ title, stats }) => {
   return (
     <section >
       {title ? <h2>{title}</h2> : ''}
       <ul >
-        {stats.map(el => {
+        {stats.map(({id, label, percentage}) => {
           return (
-            <li  key={el.id}>
-              <span>{el.label}</span>
-              <span>{el.percentage}%</span>
+            <li  key={id}>
+              <span>{label}</span>
+              <span>{percentage}%</span>
             </li>
           );
         })}
@@ -15,7 +16,12 @@ export const Statistics = ({ title, stats })=> {
     </section>
   );
 }
-
+Statistics.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  percentage: PropTypes.number,
+};
 
 
 
