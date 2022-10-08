@@ -1,32 +1,49 @@
 import PropTypes from 'prop-types';
+import { BsFillHandThumbsUpFill, BsFillPersonFill, BsGeoAltFill, BsTagsFill, BsEyeFill, BsFillPersonPlusFill} from "react-icons/bs";
+import { UserName, UserPhoto,Tag, Location, ProfileContainer, CardContainer, ListStatistics, ListItemStatistics,StatisticsLabel, StatisticsQuantity} from './Profile.styled';
 export const Profile = ({ user: { tag, location, avatar, stats, username } }) => {
   
-    return <div >
-  <div>
-    <img
+    return <CardContainer >
+  <ProfileContainer>
+    <UserPhoto
       src={avatar}
       alt="User avatar"
     />
-        <p>{username}</p>
-        <p>@{tag}</p>
-        <p>{location}</p>
-  </div>
+        <UserName><BsFillPersonFill/>{username}</UserName>
+        <Tag><BsTagsFill/>@{tag}</Tag>
+        <Location><BsGeoAltFill/>{location}</Location>
+  </ProfileContainer>
 
-  <ul >
-    <li>
-      <span >Followers</span>
-      <span >{stats.followers}</span>
-    </li>
-    <li>
-      <span >Views</span>
-      <span >{stats.views}</span>
-    </li>
-    <li>
-      <span >Likes</span>
-          <span >{stats.likes}</span>
-    </li>
-  </ul>
-</div>
+  <ListStatistics >
+    <ListItemStatistics>
+          <StatisticsLabel >
+            <BsFillPersonPlusFill />
+            Followers
+          </StatisticsLabel>
+      <StatisticsQuantity >
+        {stats.followers}
+      </StatisticsQuantity>
+    </ListItemStatistics>
+    <ListItemStatistics>
+      <StatisticsLabel >
+        <BsEyeFill/>
+      Views
+      </StatisticsLabel>
+      <StatisticsQuantity >
+        {stats.views}
+      </StatisticsQuantity>
+    </ListItemStatistics>
+    <ListItemStatistics>
+      <StatisticsLabel >
+        <BsFillHandThumbsUpFill/>
+      Likes
+      </StatisticsLabel>
+          <StatisticsQuantity >
+            {stats.likes}
+          </StatisticsQuantity>
+    </ListItemStatistics>
+  </ListStatistics>
+</CardContainer>
 }
 Profile.propTypes = {
   username: PropTypes.string,
