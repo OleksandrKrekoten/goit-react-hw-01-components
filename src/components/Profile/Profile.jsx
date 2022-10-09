@@ -19,9 +19,7 @@ import {
   StatisticsLabel,
   StatisticsQuantity,
 } from './Profile.styled';
-export const Profile = ({
-  user: { tag, location, avatar, stats, username },
-}) => {
+export const Profile = ({ tag, location, avatar, stats, username }) => {
   return (
     <CardContainer>
       <ProfileContainer>
@@ -66,9 +64,13 @@ export const Profile = ({
   );
 };
 Profile.propTypes = {
-  username: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  avatar: PropTypes.string,
-  stats: PropTypes.object,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number,
+    views: PropTypes.number,
+    likes: PropTypes.number,
+  }),
 };

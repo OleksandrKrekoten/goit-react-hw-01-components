@@ -3,7 +3,7 @@ import { ListStatistics, ItemStatistics, Title } from './Statistics.styled';
 export const Statistics = ({ title, stats }) => {
   return (
     <section>
-      {title ? <Title>{title}</Title> : ''}
+      {title && <Title>{title}</Title>}
       <ListStatistics>
         {stats.map(({ id, label, percentage }) => {
           return (
@@ -19,7 +19,11 @@ export const Statistics = ({ title, stats }) => {
 };
 Statistics.propTypes = {
   title: PropTypes.string,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  percentage: PropTypes.number,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
 };
