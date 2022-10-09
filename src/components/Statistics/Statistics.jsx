@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import {ListStatistics,ItemStatistics, Title} from './Statistics.styled'
+import { ListStatistics, ItemStatistics, Title } from './Statistics.styled';
 export const Statistics = ({ title, stats }) => {
   return (
-    <section >
+    <section>
       {title ? <Title>{title}</Title> : ''}
-      <ListStatistics >
-        {stats.map(({id, label, percentage}) => {
+      <ListStatistics>
+        {stats.map(({ id, label, percentage }) => {
           return (
-            <ItemStatistics  key={id}>
+            <ItemStatistics key={id}>
               <span>{label}</span>
               <span>{percentage}%</span>
             </ItemStatistics>
@@ -16,15 +16,10 @@ export const Statistics = ({ title, stats }) => {
       </ListStatistics>
     </section>
   );
-}
+};
 Statistics.propTypes = {
   title: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   percentage: PropTypes.number,
 };
-
-
-
-
-
